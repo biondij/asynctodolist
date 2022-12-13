@@ -12,7 +12,20 @@ function load() {
             data.forEach((todo) => {
                 const elementoLista = document.createElement('li')
                 elementoLista.className = 'list-group-item d-flex align-items-center justify-content-between'
+                elementoLista.setAttribute('data-bs-toggle', 'modal')
+                elementoLista.setAttribute('data-bs-target', '#exampleModal')
                 elementoLista.innerHTML = `<div>${todo.id} - ${todo.title}</div>`
+
+                // processo para acessar nova api, cujos dados serão exibidos no modal
+                elementoLista.addEventListener('click', async () => {
+                    const responseUser = await fetch(` https://jsonplaceholder.typicode.com/users/${todo.userId}`)
+                    const dataUser = await responseUser.json()
+
+                    const inputName = document.getElementById('name')
+                    const inputUserId = document.getElementById('userId')
+                    inputName.value = dataUser.name
+                    inputUserId.value = dataUser.id
+                })
 
                 const badge = document.createElement('span')
                 badge.className = 'badge ms-2'
@@ -42,3 +55,4 @@ btnReload.addEventListener('click', () => {
     lista.innerHTML = ''
     load()
 })
+

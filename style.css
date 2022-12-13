@@ -1,0 +1,22 @@
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+nav {
+    background-color: rgb(235, 235, 235);
+}
+
+li {
+    cursor: pointer;
+    margin-bottom: 13px;
+    border-radius: 10px;
+}
+
+li:hover {
+    background-color: rgb(235, 235, 235);
+}
+
+#loading {
+    margin: 0 auto;
+}
